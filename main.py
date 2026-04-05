@@ -2,8 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 import env
-
-# from index_router import index_router
+from index_router import index_router
 from lifespan.lifespan import lifespan
 from middlewares.log_request_and_response_middleware import (
     LogRequestAndResponseMiddleware,
@@ -29,7 +28,7 @@ app.add_middleware(
 app.add_middleware(LogRequestAndResponseMiddleware)
 
 
-# app.include_router(index_router, prefix="/api")
+app.include_router(index_router, prefix="/api")
 
 
 @app.get("/")
