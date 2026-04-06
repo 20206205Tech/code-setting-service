@@ -8,6 +8,9 @@ logger.info(f"Loading environment variables...")
 ENVIRONMENT = env.str("ENVIRONMENT", "production")
 
 
+ENVIRONMENT = env.str("ENVIRONMENT", "production")
+
+
 DATABASE_URL = env.str("SETTING_SERVICE_DATABASE_URL")
 
 

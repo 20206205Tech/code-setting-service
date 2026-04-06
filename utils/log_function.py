@@ -6,21 +6,44 @@ from loguru import logger
 
 
 def log_function(func: Callable) -> Callable:
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        signature = inspect.signature(func)
-        bound_args = signature.bind(*args, **kwargs)
-        bound_args.apply_defaults()
+    # Kiểm tra xem function có phải async không
+    if inspect.iscoroutinefunction(func):
 
-        logger.debug(
-            f"Start calling: {func.__name__} with arguments: {dict(bound_args.arguments)}"
-        )
+        @functools.wraps(func)
+        async def async_wrapper(*args, **kwargs):
+            signature = inspect.signature(func)
+            bound_args = signature.bind(*args, **kwargs)
+            bound_args.apply_defaults()
 
-        try:
-            result = func(*args, **kwargs)
-            return result
-        except Exception as e:
-            logger.exception("Exception occurred:")
-            raise
+            logger.debug(
+                f"Start calling: {func.__name__} with arguments: {dict(bound_args.arguments)}"
+            )
 
-    return wrapper
+            try:
+                result = await func(*args, **kwargs)
+                return result
+            except Exception as e:
+                logger.exception(f"Exception in {func.__name__}:")
+                raise
+
+        return async_wrapper
+    else:
+
+        @functools.wraps(func)
+        def sync_wrapper(*args, **kwargs):
+            signature = inspect.signature(func)
+            bound_args = signature.bind(*args, **kwargs)
+            bound_args.apply_defaults()
+
+            logger.debug(
+                f"Start calling: {func.__name__} with arguments: {dict(bound_args.arguments)}"
+            )
+
+            try:
+                result = func(*args, **kwargs)
+                return result
+            except Exception as e:
+                logger.exception(f"Exception in {func.__name__}:")
+                raise
+
+        return sync_wrapper
