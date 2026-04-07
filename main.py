@@ -40,7 +40,7 @@ def root():
 def main():
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=30002)
+    uvicorn.run("main:app", host="0.0.0.0", port=env.PORT, reload=env.RELOAD)
 
 
 if __name__ == "__main__":
