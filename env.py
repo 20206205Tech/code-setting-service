@@ -30,6 +30,9 @@ Bạn có thể đăng nhập qua Google bằng đường dẫn dưới đây:
 Xem redoc:
 * [Xem redoc](/redoc)
 
+Xem docs:
+* [Xem docs](/docs)
+
 Xem voyager:
 * [Xem voyager](/voyager)
 
