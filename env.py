@@ -27,6 +27,12 @@ DESCRIPTION = f"""
 Bạn có thể đăng nhập qua Google bằng đường dẫn dưới đây:
 * [Đăng nhập với Google](https://{SUPABASE_PROJECT_ID}.supabase.co/auth/v1/authorize?provider=google)
 
+Xem redoc:
+* [Xem redoc](/redoc)
+
+Xem voyager:
+* [Xem voyager](/voyager)
+
 ### Thông tin hệ thống:
 * **SERVICE_NAME:** {SERVICE_NAME}
 * **ENVIRONMENT:** {ENVIRONMENT}

@@ -35,7 +35,14 @@ def root():
     return {"message": "Hello World", "docs": "/docs"}
 
 
-app.mount("/voyager", create_voyager(app))
+app.mount(
+    "/voyager",
+    create_voyager(
+        app,
+        module_color={"common": "blue", "app": "red", "app": "green"},
+        swagger_url="/docs",
+    ),
+)
 
 
 def main():
