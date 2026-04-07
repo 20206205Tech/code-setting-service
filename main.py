@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_voyager import create_voyager
 
 import env
 from index_router import index_router
@@ -32,6 +33,9 @@ app.include_router(index_router, prefix="/api")
 @log_function
 def root():
     return {"message": "Hello World", "docs": "/docs"}
+
+
+app.mount("/voyager", create_voyager(app))
 
 
 def main():
