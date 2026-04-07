@@ -19,3 +19,16 @@ SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co"
 JWKS_URL = f"{SUPABASE_URL}/auth/v1/.well-known/jwks.json"
 ISSUER = f"{SUPABASE_URL}/auth/v1"
 AUDIENCE = "authenticated"
+
+
+DESCRIPTION = f"""
+# Chào mừng đến với {SERVICE_NAME}
+
+Bạn có thể đăng nhập qua Google bằng đường dẫn dưới đây:
+* [Đăng nhập với Google](https://{SUPABASE_PROJECT_ID}.supabase.co/auth/v1/authorize?provider=google)
+
+### Thông tin hệ thống:
+* **SERVICE_NAME:** {SERVICE_NAME}
+* **ENVIRONMENT:** {ENVIRONMENT}
+* **RELOAD:** {RELOAD}
+""".strip()

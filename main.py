@@ -11,10 +11,7 @@ from utils.log_function import log_function
 
 app = FastAPI(
     lifespan=lifespan,
-    description=f"""
-Bạn có thể đăng nhập qua Google bằng đường dẫn dưới đây:
-* [Đăng nhập với Google](https://{env.SUPABASE_PROJECT_ID}.supabase.co/auth/v1/authorize?provider=google)
-    """,
+    description=env.DESCRIPTION,
 )
 
 
