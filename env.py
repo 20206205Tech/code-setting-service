@@ -41,3 +41,16 @@ Xem voyager:
 * **ENVIRONMENT:** {ENVIRONMENT}
 * **RELOAD:** {RELOAD}
 """.strip()
+
+
+if ENVIRONMENT == "development":
+    import subprocess
+
+    subprocess.run(["start", f"http://localhost:{PORT}/docs"], shell=True)
+    subprocess.run(
+        [
+            "start",
+            f"https://{SUPABASE_PROJECT_ID}.supabase.co/auth/v1/authorize?provider=google",
+        ],
+        shell=True,
+    )
